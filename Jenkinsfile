@@ -34,10 +34,6 @@ node{
         sh "${mavenCMD} clean package"        
     }
     
-    stage('publish test reports'){
-        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Capstone-Project-Live-Demo/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
-    }
-    
     stage('Containerize the application'){
         echo 'Creating Docker image'
         sh "${dockerCMD} build -t athulanil/insure-me:${tagName} ."
